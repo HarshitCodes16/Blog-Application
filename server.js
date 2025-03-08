@@ -4,7 +4,7 @@ import axios from "axios";
 
 const app = express();
 const PORT = process.env.PORT || 3000; // Use Render-assigned PORT
-const API_URL = "http://localhost:4000";
+const API_URL = "https://blog-application-dh72.onrender.com";
 
 app.use(express.static("public"));
 
