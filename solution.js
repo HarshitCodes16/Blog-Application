@@ -92,6 +92,7 @@ app.delete("/posts/:id", (req, res) => {
   res.json({ message: "Post deleted" });
 });
 
-app.listen(port, () => {
-  console.log(`API is running at http://localhost:${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`API is running at port ${port}`);
 });
+
