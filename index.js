@@ -1,8 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000; // Use Render-assigned PORT
+
+app.use(cors()); // Enable CORS
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // In-memory data store
 let posts = [
@@ -35,12 +40,9 @@ let posts = [
 let lastId = 3;
 
 // Middleware
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-//Write your code here//
-
-//CHALLENGE 1: GET All posts
 // GET all posts
 app.get("/posts", (req, res) => {
   console.log(posts);
@@ -90,6 +92,7 @@ app.delete("/posts/:id", (req, res) => {
   res.json({ message: "Post deleted" });
 });
 
-app.listen(port, () => {
-  console.log(`API is running at http://localhost:${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`API is running at port ${port}`);
 });
+
